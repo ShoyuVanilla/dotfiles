@@ -1,0 +1,266 @@
+" Plugins
+set argtextobj
+set commentary
+" set easymotion
+set exchange
+set highlightedyank
+set NERDTree
+set ReplaceWithRegister
+set surround
+set which-key
+set keep-english-in-normal
+
+" Settings
+set clipboard+=unnamed
+set clipboard+=ideaput
+set number
+set relativenumber
+set scrolloff=4
+set sidescrolloff=8
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+
+" it's quite uncomfortable for esc mapping
+set notimeout
+
+set ideajoin
+set idearefactormode=keep
+
+let mapleader=" "
+let maplocalleader=" "
+
+" Esc
+inoremap kj <Esc>
+inoremap ㅏㅓ <Esc>
+vnoremap kj <Esc>
+
+" Window motions
+sethandler <C-h> a:vim
+sethandler <C-l> a:vim
+sethandler <C-j> a:vim
+sethandler <C-k> a:vim
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+
+" Escape highlight with Esc
+nnoremap <Esc> :noh<CR><Esc>
+
+" Better indenting
+vnoremap < <gv
+vnoremap > >gv
+
+let g:WhichKey_SortOrder = "by_description"
+
+" Telescpoe-like
+let g:WhichKeyDesc_live_grep = "<leader>/ Live Grep"
+nnoremap <leader>/ :action FindInPath<CR>
+
+let g:WhichKeyDesc_find_file = "<leader>f +find/file"
+
+  let g:WhichKeyDesc_find_file_find_files = "<leader>ff Find Files"
+  nnoremap <leader>ff :action GotoFile<CR>
+
+  let g:WhichKeyDesc_find_file_recent_files = "<leader>fr Recent Files"
+  nnoremap <leader>fr :action RecentFiles<CR>
+
+  let g:WhichKeyDesc_find_file_buffers = "<leader>fb Buffers"
+  nnoremap <leader>fb :action Switcher<CR>
+
+  let g:WhichKeyDesc_find_file_file_tree_popup = "<leader>fe File Tree Popup"
+  nnoremap <leader>fe :action ShowNavBar<CR>
+
+  let g:WhichKeyDesc_find_file_file_tree_window = "<leader>fE File Tree Window"
+  nnoremap <leader>fE :NERDTreeFocus<CR>
+
+  let g:WhichKeyDesc_find_file_new = "<leader>fn +new file/dir"
+
+    let g:WhichKeyDesc_find_file_new_file = "<leader>fnf New File"
+    nnoremap <leader>fnf :action NewFile<CR>
+
+    let g:WhichKeyDesc_find_file_new_dir = "<leader>fnd New Directory"
+    nnoremap <leader>fnd :action NewDir<CR>
+
+  let g:WhichKeyDesc_find_file_file_structure_popup = "<leader>fs File Structure Popup"
+  nnoremap <leader>fs :action FileStructurePopup<CR>
+
+let g:WhichKeyDesc_recent = "<leader>r +recent"
+
+  let g:WhichKeyDesc_recent_changed_files = "<leader>rc Recent Changed Files"
+  nnoremap <leader>rc :action RecentChangedFiles<CR>
+
+  let g:WhichKeyDesc_recent_files = "<leader>rf Recent Files"
+  nnoremap <leader>rf :action RecentFiles<CR>
+
+  let g:WhichKeyDesc_recent_locations = "<leader>rl Recent Locations"
+  nnoremap <leader>rl :action RecentLocations<CR>
+
+  let g:WhichKeyDesc_recent_histories = "<leader>rh Current File's Local History"
+  nnoremap <leader>rh :action LocalHistory.ShowHistory<CR>
+
+let g:WhichKeyDesc_search = "<leader>s +search"
+
+  let g:WhichKeyDesc_search_actions = "<leader>sa Actions"
+  nnoremap <leader>sa :action GotoAction<CR>
+
+  let g:WhichKeyDesc_search_symbols = "<leader>ss Symbols"
+  nnoremap <leader>ss :action GotoSymbol<CR>
+
+  let g:WhichKeyDesc_search_classes = "<leader>sc Classes"
+  nnoremap <leader>sc :action GotoClass<CR>
+
+" Window
+let g:WhichKeyDesc_window = "<leader>w +window"
+
+  let g:WhichKeyDesc_window_split_horizontally = "<leader>w- Split Horizontally"
+  nnoremap <leader>w- :action SplitHorizontally<CR>
+
+  let g:WhichKeyDesc_window_split_vertically = "<leader>w\\ Split Vertically"
+  nnoremap <leader>w\ :action SplitVertically<CR>
+
+  let g:WhichKeyDesc_window_delete = "<leader>wd Delete Window"
+  nnoremap <leader>wd :action Unsplit<CR>
+
+  let g:WhichKeyDesc_window_focus_other = "<leader>ww Focus Other Window"
+  nnoremap <leader>ww :action NextSplitter<CR>
+
+  let g:WhichKeyDesc_window_jetbrains_tool = "<leader>wj +jetbrains tools"
+
+    let g:WhichKeyDesc_window_jetbrains_tool_delete = "<leader>wjd Delete Tool and Side Windows"
+    nnoremap <leader>wjd :action HideAllWindows<CR>:action HideSideWindows<CR>
+
+    let g:WhichKeyDesc_window_jetbrains_tool_focus_recent = "<leader>wjf Focus Recent"
+    nnoremap <leader>wjf :action JumpToLastWindow<CR>
+
+" Movements
+let g:WhichKeyDesc_prev_diagnostic = "[d Prev Diagnostic"
+nnoremap [d :action GotoPreviousError<CR>
+
+let g:WhichKeyDesc_next_diagnostic = "]d Next Diagnostic"
+nnoremap ]d :action GotoNextError<CR>
+
+let g:WhichKeyDesc_prev_diagnostic_project = "[D Prev Diagnostic(Project)"
+let g:WhichKeyDesc_next_diagnostic_project = "]D Next Diagnostic(Project)"
+if &ide =~? 'rider'
+  nnoremap [D :action ReSharperGotoPrevErrorInSolution<CR>
+  nnoremap ]D :action ReSharperGotoNextErrorInSolution<CR>
+endif
+
+let g:WhichKeyDesc_prev_method = "[m Prev Method"
+nnoremap [m :action MethodUp<CR>
+
+let g:WhichKeyDesc_next_method = "]m Next Method"
+nnoremap ]m :action MethodDown<CR>
+
+let g:WhichKeyDesc_prev_tab = "[b Prev Buffer"
+nnoremap [b :action PreviousTab<CR>
+
+let g:WhichKeyDesc_next_tab = "]b Next Buffer"
+nnoremap ]b :action NextTab<CR>
+
+" Buffer
+let g:WhichKeyDesc_buffer_delete = "bd Delete Buffer"
+nnoremap <leader>bd :action CloseContent<CR>
+
+let g:WhichKeyDesc_buffer_toggle_pin = "bp Toggle Buffer Pin"
+nnoremap <leader>bp :action PinActiveTabToggle<CR>
+
+let g:WhichKeyDesc_buffer_delete_all_unpinned = "bP Delete All Unpinned Buffers"
+nnoremap <leader>bP :action CloseAllUnpinnedEditors<CR>
+
+" Terminal
+let g:WhichKeyDesc_open_terminal_root = "<leader>t Open Terminal(root)"
+nnoremap <leader>t :action ActivateTerminalToolWindow<CR>
+
+let g:WhichKeyDesc_open_terminal_cwd = "<leader>T Open Terminal(cwd)"
+nnoremap <leader>T :action Terminal.OpenInTerminal<CR>
+
+" Code
+let g:WhichKeyDesc_code = "<leader>c +code"
+
+  let g:WhichKeyDesc_code_rename = "<leader>cr Rename"
+  nnoremap <leader>cr :action RenameElement<CR>
+
+  let g:WhichKeyDesc_code_rename = "<leader>cf Format"
+  nnoremap <leader>cf :action ReformatCode<CR>
+  vnoremap <leader>cf :action ReformatCode<CR>
+
+  let g:WhichKeyDesc_code_action = "<leader>ca Source Action"
+  nnoremap <leader>ca :action ShowIntentionActions<CR>
+
+" Code navigations
+let g:WhichKeyDesc_goto_declaration = "gd Goto Declaration/References"
+nnoremap gd :action GotoDeclaration<CR>
+
+let g:WhichKeyDesc_goto_declaration_only = "gD Goto Declaration Only"
+nnoremap gD :action GotoDeclarationOnly<CR>
+
+let g:WhichKeyDesc_goto_implementation = "gi Goto Implementation"
+nnoremap gi :action GotoImplementation<CR>
+
+let g:WhichKeyDesc_goto_usages = "gr Open References Tool Window"
+nnoremap gr :action FindUsages<CR>
+
+let g:WhichKeyDesc_goto_related = "gl Goto Related"
+nnoremap gl :action GotoRelated<CR>
+
+" Debug
+let g:WhichKeyDesc_debug = "<leader>d +debug"
+
+  let g:WhichKeyDesc_debug_widget = "<leader>dw Open Widget"
+  nnoremap <leader>dw :action ActivateDebugToolWindow<CR>
+
+  let g:WhichKeyDesc_debug_session = "<leader>ds Session"
+  nnoremap <leader>ds :action Debug<CR>
+
+  let g:WhichKeyDesc_debug_continue = "<leader>dc Continue"
+  nnoremap <leader>dc :action Resume<CR>
+
+  let g:WhichKeyDesc_debug_run_to_cursor = "<leader>dC Run to Cursor"
+  nnoremap <leader>dC :action RunToCursor<CR>
+
+  let g:WhichKeyDesc_debug_step_into = "<leader>di Step Into"
+  nnoremap <leader>di :action StepInto<CR>
+
+  let g:WhichKeyDesc_debug_step_out = "<leader>do Step Out"
+  nnoremap <leader>do :action StepOut<CR>
+
+  let g:WhichKeyDesc_debug_step_over = "<leader>dO Step Over"
+  nnoremap <leader>dO :action StepOver<CR>
+
+  let g:WhichKeyDesc_debug_pause = "<leader>dp Pause"
+  nnoremap <leader>dp :action Pause<CR>
+
+  let g:WhichKeyDesc_debug_terminate = "<leader>dt Terminate"
+  nnoremap <leader>dt :action Stop<CR>
+
+  let g:WhichKeyDesc_debug_list_breakpoints = "<leader>dl List Breakpoints"
+  nnoremap <leader>dl :action ViewBreakpoints<CR>
+
+  let g:WhichKeyDesc_debug_toggle_breakpoint = "<leader>db Toggle Breakpoint"
+  nnoremap <leader>db :action ToggleLineBreakpoint<CR>
+
+  let g:WhichKeyDesc_debug_edit_breakpoint = "<leader>dB Edit Breakpoint"
+  nnoremap <leader>dB :action EditBreakpoint<CR>
+
+  let g:WhichKeyDesc_debug_eval = "<leader>de Eval"
+  nnoremap <leader>de :action EvaluateExpression<CR>
+
+" Zen mode
+let g:WhichKeyDesc_zen = "<leader>z +zen mode"
+
+  let g:WhichKeyDesc_zen_toggle_zen_mode = "<leader>zz Toggle Zen Mode"
+  nnoremap <leader>zz :action ToggleZenMode<CR>
+
+  let g:WhichKeyDesc_zen_toggle_distraction_free_mode = "<leader>zd Toggle Distraction Free Mode"
+  nnoremap <leader>zd :action ToggleDistractionFreeMode<CR>
+
+" Commentary
+let g:WhichKeyDesc_commentary = "gc +commentary"
+
+  let g:WhichKeyDesc_commentary_toggle_line = "gcc Toggle Current Line"
+
+  let g:WhichKeyDesc_commentary_toggle_adjacent = "gcc Toggle Current and Adjacent Lines"

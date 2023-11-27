@@ -1,0 +1,6 @@
+dotfiles_dir = "dotfiles"
+
+[settings.dots]
+alacritty = { source = "alacritty", target = ".config/alacritty" }
+helix = { source = "helix", target = ".config/helix" }
+zellij = { source = "zellij", target = ".config/zellij" }

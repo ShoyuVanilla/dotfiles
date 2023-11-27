@@ -1,0 +1,18 @@
+[[language]]
+name = "c-sharp"
+language-servers = [ "csharp-ls" ]
+auto-format = false
+
+[[language]]
+name = "toml"
+auto-format = true
+
+[[language]]
+name = "kdl"
+indent = { tab-width = 2, unit = "  " }
+
+[language-server.rust-analyzer.config]
+check = { command = "clippy" }
+inlayHints.bindingModeHints.enable = true
+inlayHints.closureCaptureHints.enable = true
+inlayHints.closureReturnTypeHints.enable = "always"
