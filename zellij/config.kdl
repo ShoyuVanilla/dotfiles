@@ -47,6 +47,7 @@ keybinds clear-defaults=true {
     bind "Ctrl d" { HalfPageScrollDown; }
     bind "Ctrl u" { HalfPageScrollUp; }
     bind "Ctrl n" { NewPane; }
+    bind "Ctrl z" { ToggleFocusFullscreen; }
     bind "Alt n" { NewTab; SwitchToMode "Tmux"; }
     bind "x" { CloseFocus; }
     bind "X" { CloseTab; }

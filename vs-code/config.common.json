@@ -1,0 +1,435 @@
+{
+  "diffEditor.wordWrap": "on",
+
+  "editor.guides.bracketPairs": true,
+  "editor.guides.indentation": true,
+  "editor.inlayHints.enabled": "on",
+  "editor.wordWrap": "on",
+  "editor.renderWhitespace": "all",
+  "editor.cursorSurroundingLines": 4,
+  "editor.lineNumbers": "relative",
+
+  "problems.showCurrentInStatus": true,
+  "problems.sortOrder": "severity",
+
+  "files.eol": "\n",
+
+  "[rust]": {
+    "editor.formatOnSave": true
+  },
+  "rust-analyzer.checkOnSave": true,
+  "rust-analyzer.check.command": "clippy",
+
+  "extensions.experimental.affinity": {
+    "vscodevim.vim": 1
+  },
+
+  "vim.leader": " ",
+  "vim.smartRelativeLine": true,
+  "vim.highlightedyank.enable": true,
+  "vim.easymotion": true,
+
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        ">"
+      ],
+      "commands": [
+        "editor.action.indentLines"
+      ]
+    },
+    {
+      "before": [
+        "<"
+      ],
+      "commands": [
+        "editor.action.outdentLines"
+      ]
+    },
+    {
+      "before": [
+        "<C-h>"
+      ],
+      "commands": [
+        "workbench.action.focusLeftGroup"
+      ]
+    },
+    {
+      "before": [
+        "<C-j>"
+      ],
+      "commands": [
+        "workbench.action.focusBelowGroup"
+      ]
+    },
+    {
+      "before": [
+        "<C-k>"
+      ],
+      "commands": [
+        "workbench.action.focusAboveGroup"
+      ]
+    },
+    {
+      "before": [
+        "<C-l>"
+      ],
+      "commands": [
+        "workbench.action.focusRightGroup"
+      ]
+    },
+    {
+      "before": [
+        "H"
+      ],
+      "commands": [
+        "workbench.action.previousEditor"
+      ]
+    },
+    {
+      "before": [
+        "L"
+      ],
+      "commands": [
+        "workbench.action.nextEditor"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "y"
+      ],
+      "commands": [
+        "editor.action.goToTypeDefinition"
+      ]
+    },
+    {
+      "before": [
+        "]",
+        "d"
+      ],
+      "commands": [
+        "editor.action.marker.nextInFiles"
+      ]
+    },
+    {
+      "before": [
+        "[",
+        "d"
+      ],
+      "commands": [
+        "editor.action.marker.prevInFiles"
+      ]
+    },
+    {
+      "before": [
+        "]",
+        "D"
+      ],
+      "commands": [
+        "editor.action.marker.next"
+      ]
+    },
+    {
+      "before": [
+        "[",
+        "D"
+      ],
+      "commands": [
+        "editor.action.marker.prev"
+      ]
+    },
+    {
+      "before": [
+        "]",
+        "g"
+      ],
+      "commands": [
+        "workbench.action.editor.nextChange",
+        "workbench.action.compareEditor.nextChange"
+      ]
+    },
+    {
+      "before": [
+        "[",
+        "g"
+      ],
+      "commands": [
+        "workbench.action.editor.previousChange",
+        "workbench.action.compareEditor.previousChange"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "w",
+        "d"
+      ],
+      "commands": [
+        "workbench.action.closeEditorsInGroup"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "w",
+        "D"
+      ],
+      "commands": [
+        "workbench.action.closeEditorsInOtherGroups"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "w",
+        "\\"
+      ],
+      "commands": [
+        "workbench.action.splitEditor"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "w",
+        "|"
+      ],
+      "commands": [
+        "workbench.action.splitEditor"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "w",
+        "-"
+      ],
+      "commands": [
+        "workbench.action.splitEditorDown"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "w",
+        "_"
+      ],
+      "commands": [
+        "workbench.action.splitEditorDown"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "b",
+        "d"
+      ],
+      "commands": [
+        "workbench.action.closeActiveEditor"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "b",
+        "D"
+      ],
+      "commands": [
+        "workbench.action.closeOtherEditors"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "y"
+      ],
+      "after": [
+        "\"",
+        "*",
+        "y"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "p"
+      ],
+      "after": [
+        "\"",
+        "*",
+        "p"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "P"
+      ],
+      "after": [
+        "\"",
+        "*",
+        "P"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "a"
+      ],
+      "commands": [
+        "editor.action.quickFix"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "r"
+      ],
+      "commands": [
+        "editor.action.rename"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "c",
+        "f"
+      ],
+      "commands": [
+        "editor.action.formatDocument",
+        "workbench.action.files.save"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "f",
+        "f"
+      ],
+      "commands": [
+        "workbench.action.quickOpen"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "f",
+        "r"
+      ],
+      "commands": [
+        "workbench.action.openRecent"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "f",
+        "c",
+        "r"
+      ],
+      "commands": [
+        "workbench.action.clearRecentFiles"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "/"
+      ],
+      "commands": [
+        "workbench.action.findInFiles"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "t"
+      ],
+      "commands": [
+        "workbench.action.terminal.toggleTerminal"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "z"
+      ],
+      "commands": [
+        "workbench.action.toggleZenMode"
+      ]
+    }
+  ],
+
+  "vim.insertModeKeyBindings": [
+    {
+      "before": [
+        "k",
+        "j"
+      ],
+      "after": [
+        "<Esc>"
+      ]
+    }
+  ],
+
+  "vim.visualModeKeyBindings": [
+    {
+      "before": [
+        ";"
+      ],
+      "after": [
+        "<Esc>"
+      ]
+    },
+    {
+      "before": [
+        ">"
+      ],
+      "commands": [
+        "editor.action.indentLines"
+      ]
+    },
+    {
+      "before": [
+        "<"
+      ],
+      "commands": [
+        "editor.action.outdentLines"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "y"
+      ],
+      "after": [
+        "\"",
+        "*",
+        "y"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "p"
+      ],
+      "after": [
+        "\"",
+        "*",
+        "p"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "P"
+      ],
+      "after": [
+        "\"",
+        "*",
+        "P"
+      ]
+    }
+  ]
+}
