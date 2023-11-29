@@ -97,6 +97,60 @@
     {
       "before": [
         "g",
+        "h"
+      ],
+      "after": [
+        "0"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "l"
+      ],
+      "after": [
+        "$"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "s"
+      ],
+      "after": [
+        "^"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "t"
+      ],
+      "after": [
+        "H"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "c"
+      ],
+      "after": [
+        "M"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "b"
+      ],
+      "after": [
+        "L"
+      ]
+    },
+    {
+      "before": [
+        "g",
         "y"
       ],
       "commands": [
@@ -109,7 +163,7 @@
         "d"
       ],
       "commands": [
-        "editor.action.marker.nextInFiles"
+        "editor.action.marker.next"
       ]
     },
     {
@@ -118,7 +172,7 @@
         "d"
       ],
       "commands": [
-        "editor.action.marker.prevInFiles"
+        "editor.action.marker.prev"
       ]
     },
     {
@@ -127,7 +181,7 @@
         "D"
       ],
       "commands": [
-        "editor.action.marker.next"
+        "editor.action.marker.nextInFiles"
       ]
     },
     {
@@ -136,7 +190,7 @@
         "D"
       ],
       "commands": [
-        "editor.action.marker.prev"
+        "editor.action.marker.prevInFiles"
       ]
     },
     {
@@ -361,7 +415,7 @@
     }
   ],
 
-  "vim.insertModeKeyBindings": [
+  "vim.insertModeKeyBindingsNonRecursive": [
     {
       "before": [
         "k",
@@ -373,7 +427,7 @@
     }
   ],
 
-  "vim.visualModeKeyBindings": [
+  "vim.visualModeKeyBindingsNonRecursive": [
     {
       "before": [
         ";"
@@ -429,6 +483,60 @@
         "\"",
         "*",
         "P"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "h"
+      ],
+      "after": [
+        "0"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "l"
+      ],
+      "after": [
+        "$"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "s"
+      ],
+      "after": [
+        "^"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "t"
+      ],
+      "after": [
+        "H"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "c"
+      ],
+      "after": [
+        "M"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "b"
+      ],
+      "after": [
+        "L"
       ]
     }
   ]

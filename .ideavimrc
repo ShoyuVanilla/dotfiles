@@ -34,7 +34,7 @@ let maplocalleader=" "
 " Esc
 inoremap kj <Esc>
 inoremap ㅏㅓ <Esc>
-vnoremap kj <Esc>
+vnoremap ; <Esc>
 
 " Window motions
 sethandler <C-h> a:vim
@@ -45,6 +45,10 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
+
+" Tab motions
+nnoremap H gT
+nnoremap L gt
 
 " Escape highlight with Esc
 nnoremap <Esc> :noh<CR><Esc>
@@ -59,13 +63,22 @@ let g:WhichKey_SortOrder = "by_description"
 let g:WhichKeyDesc_live_grep = "<leader>/ Live Grep"
 nnoremap <leader>/ :action FindInPath<CR>
 
-let g:WhichKeyDesc_find_file = "<leader>f +find/file"
+let g:WhichKeyDesc_find_file = "<leader>f +find/filesystem"
 
   let g:WhichKeyDesc_find_file_find_files = "<leader>ff Find Files"
   nnoremap <leader>ff :action GotoFile<CR>
 
   let g:WhichKeyDesc_find_file_recent_files = "<leader>fr Recent Files"
   nnoremap <leader>fr :action RecentFiles<CR>
+
+  let g:WhichKeyDesc_recent_changed_files = "<leader>fc Recent Changed Files"
+  nnoremap <leader>fc :action RecentChangedFiles<CR>
+
+  let g:WhichKeyDesc_recent_locations = "<leader>fl Recent Locations"
+  nnoremap <leader>fl :action RecentLocations<CR>
+
+  let g:WhichKeyDesc_recent_histories = "<leader>fh Current File's Local History"
+  nnoremap <leader>fh :action LocalHistory.ShowHistory<CR>
 
   let g:WhichKeyDesc_find_file_buffers = "<leader>fb Buffers"
   nnoremap <leader>fb :action Switcher<CR>
@@ -86,20 +99,6 @@ let g:WhichKeyDesc_find_file = "<leader>f +find/file"
 
   let g:WhichKeyDesc_find_file_file_structure_popup = "<leader>fs File Structure Popup"
   nnoremap <leader>fs :action FileStructurePopup<CR>
-
-let g:WhichKeyDesc_recent = "<leader>r +recent"
-
-  let g:WhichKeyDesc_recent_changed_files = "<leader>rc Recent Changed Files"
-  nnoremap <leader>rc :action RecentChangedFiles<CR>
-
-  let g:WhichKeyDesc_recent_files = "<leader>rf Recent Files"
-  nnoremap <leader>rf :action RecentFiles<CR>
-
-  let g:WhichKeyDesc_recent_locations = "<leader>rl Recent Locations"
-  nnoremap <leader>rl :action RecentLocations<CR>
-
-  let g:WhichKeyDesc_recent_histories = "<leader>rh Current File's Local History"
-  nnoremap <leader>rh :action LocalHistory.ShowHistory<CR>
 
 let g:WhichKeyDesc_search = "<leader>s +search"
 
@@ -150,10 +149,12 @@ if &ide =~? 'rider'
 endif
 
 let g:WhichKeyDesc_prev_method = "[m Prev Method"
-nnoremap [m :action MethodUp<CR>
+nnoremap [f :action MethodUp<CR>
+vnoremap [f :action MethodUp<CR>
 
 let g:WhichKeyDesc_next_method = "]m Next Method"
-nnoremap ]m :action MethodDown<CR>
+nnoremap ]f :action MethodDown<CR>
+vnoremap ]f :action MethodDown<CR>
 
 let g:WhichKeyDesc_prev_tab = "[b Prev Buffer"
 nnoremap [b :action PreviousTab<CR>
@@ -191,6 +192,12 @@ let g:WhichKeyDesc_code = "<leader>c +code"
   let g:WhichKeyDesc_code_action = "<leader>ca Source Action"
   nnoremap <leader>ca :action ShowIntentionActions<CR>
 
+let g:WhichKeyDesc_rename_symbol = "<leader>r Rename Symbol"
+nnoremap <leader>r :action RenameElement<CR>
+
+let g:WhichKeyDesc_source_code_action = "<leader>a Source Code Action"
+nnoremap <leader>a :action ShowIntentionActions<CR>
+
 " Code navigations
 let g:WhichKeyDesc_goto_declaration = "gd Goto Declaration/References"
 nnoremap gd :action GotoDeclaration<CR>
@@ -198,14 +205,38 @@ nnoremap gd :action GotoDeclaration<CR>
 let g:WhichKeyDesc_goto_declaration_only = "gD Goto Declaration Only"
 nnoremap gD :action GotoDeclarationOnly<CR>
 
+let g:WhichKeyDesc_goto_type_declaration = "gy Goto Type Declaration"
+nnoremap gd :action GotoTypeDeclaration<CR>
+
 let g:WhichKeyDesc_goto_implementation = "gi Goto Implementation"
 nnoremap gi :action GotoImplementation<CR>
 
 let g:WhichKeyDesc_goto_usages = "gr Open References Tool Window"
 nnoremap gr :action FindUsages<CR>
 
-let g:WhichKeyDesc_goto_related = "gl Goto Related"
-nnoremap gl :action GotoRelated<CR>
+let g:WhichKeyDesc_goto_start_of_line = "gh Goto Start of Line"
+nnoremap gh 0
+vnoremap gh 0
+
+let g:WhichKeyDesc_goto_end_of_line = "gl Goto End of Line"
+nnoremap gl $
+vnoremap gl $
+
+let g:WhichKeyDesc_goto_first_non_white_of_line = "gs Goto First Non-Whitespace of Line"
+nnoremap gs ^
+vnoremap gs ^
+
+let g:WhichKeyDesc_goto_screen_top = "gt Goto Screen Top"
+nnoremap gt T
+vnoremap gt T
+
+let g:WhichKeyDesc_goto_screen_center = "gc Goto Screen Center"
+nnoremap gc M
+vnoremap gc M
+
+let g:WhichKeyDesc_goto_screen_center = "gc Goto Screen Bottom"
+nnoremap gb L
+vnoremap gb L
 
 " Debug
 let g:WhichKeyDesc_debug = "<leader>d +debug"
@@ -264,3 +295,16 @@ let g:WhichKeyDesc_commentary = "gc +commentary"
   let g:WhichKeyDesc_commentary_toggle_line = "gcc Toggle Current Line"
 
   let g:WhichKeyDesc_commentary_toggle_adjacent = "gcc Toggle Current and Adjacent Lines"
+
+" Clipboard
+let g:WhichKeyDesc_clipboard_yank = "<leader>y Yank to Clipboard"
+nnoremap <leader>y "*y
+vnoremap <leader>y "*y
+
+let g:WhichKeyDesc_clipboard_paste_after = "<leader>p Paste Clipboard After"
+nnoremap <leader>p "*p
+vnoremap <leader>p "*p
+
+let g:WhichKeyDesc_clipboard_paste_before = "<leader>p Paste Clipboard Before"
+nnoremap <leader>P "*P
+vnoremap <leader>P "*P
