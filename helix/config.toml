@@ -1,4 +1,4 @@
-theme = "gruvbox_material_dark_hard"
+theme = "catppuccin_mocha"
 
 [editor]
 bufferline = "always"
@@ -11,7 +11,7 @@ mouse = false
 [editor.cursor-shape]
 insert = "bar"
 normal = "block"
-select = "underline"
+select = "block"
 
 [editor.file-picker]
 hidden = false
@@ -86,3 +86,12 @@ D = "wonly"
 "|" = "vsplit"
 "minus" = "hsplit"
 "_" = "hsplit"
+
+[keys.normal."space"."b"]
+c = ":buffer-close"
+C = ":buffer-close-others"
+d = ":buffer-close!"
+D = ":buffer-close-others!"
+
+[keys.normal."space"."c"]
+f = [":format :write"]

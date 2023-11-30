@@ -11,8 +11,6 @@ set which-key
 set keep-english-in-normal
 
 " Settings
-set clipboard+=unnamed
-set clipboard+=ideaput
 set number
 set relativenumber
 set scrolloff=4
@@ -206,7 +204,7 @@ let g:WhichKeyDesc_goto_declaration_only = "gD Goto Declaration Only"
 nnoremap gD :action GotoDeclarationOnly<CR>
 
 let g:WhichKeyDesc_goto_type_declaration = "gy Goto Type Declaration"
-nnoremap gd :action GotoTypeDeclaration<CR>
+nnoremap gy :action GotoTypeDeclaration<CR>
 
 let g:WhichKeyDesc_goto_implementation = "gi Goto Implementation"
 nnoremap gi :action GotoImplementation<CR>
@@ -227,8 +225,8 @@ nnoremap gs ^
 vnoremap gs ^
 
 let g:WhichKeyDesc_goto_screen_top = "gt Goto Screen Top"
-nnoremap gt T
-vnoremap gt T
+nnoremap gt H
+vnoremap gt H
 
 let g:WhichKeyDesc_goto_screen_center = "gc Goto Screen Center"
 nnoremap gc M
