@@ -348,6 +348,16 @@
       "before": [
         "<leader>",
         "c",
+        "c"
+      ],
+      "commands": [
+        "editor.action.commentLine"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "c",
         "f"
       ],
       "commands": [
@@ -450,6 +460,16 @@
       ],
       "commands": [
         "editor.action.outdentLines"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "c",
+        "c"
+      ],
+      "commands": [
+        "editor.action.commentLine"
       ]
     },
     {
