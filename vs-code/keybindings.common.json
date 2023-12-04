@@ -36,5 +36,15 @@
     "key": "q",
     "command": "workbench.action.toggleSidebarVisibility",
     "when": "!inputFocus && sideBarFocus"
+  },
+  {
+    "key": "[ g",
+    "command": "workbench.action.compareEditor.previousChange",
+    "when": "textCompareEditorActive && vim.active && !inDebugRepl && vim.mode == 'Normal'"
+  },
+  {
+    "key": "] g",
+    "command": "workbench.action.compareEditor.nextChange",
+    "when": "textCompareEditorActive && vim.active && !inDebugRepl && vim.mode == 'Normal'"
   }
 ]

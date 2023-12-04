@@ -159,15 +159,6 @@
     },
     {
       "before": [
-        "]",
-        "d"
-      ],
-      "commands": [
-        "editor.action.marker.next"
-      ]
-    },
-    {
-      "before": [
         "[",
         "d"
       ],
@@ -178,10 +169,10 @@
     {
       "before": [
         "]",
-        "D"
+        "d"
       ],
       "commands": [
-        "editor.action.marker.nextInFiles"
+        "editor.action.marker.next"
       ]
     },
     {
@@ -196,11 +187,10 @@
     {
       "before": [
         "]",
-        "g"
+        "D"
       ],
       "commands": [
-        "workbench.action.editor.nextChange",
-        "workbench.action.compareEditor.nextChange"
+        "editor.action.marker.nextInFiles"
       ]
     },
     {
@@ -209,8 +199,16 @@
         "g"
       ],
       "commands": [
-        "workbench.action.editor.previousChange",
-        "workbench.action.compareEditor.previousChange"
+        "workbench.action.editor.previousChange"
+      ]
+    },
+    {
+      "before": [
+        "]",
+        "g"
+      ],
+      "commands": [
+        "workbench.action.editor.nextChange"
       ]
     },
     {
@@ -422,6 +420,33 @@
       "commands": [
         "workbench.action.toggleZenMode"
       ]
+    },
+    {
+      "before": [
+        "m",
+        "s"
+      ],
+      "after": [
+        "<plugys>"
+      ]
+    },
+    {
+      "before": [
+        "m",
+        "d"
+      ],
+      "after": [
+        "<plugds>"
+      ]
+    },
+    {
+      "before": [
+        "m",
+        "r"
+      ],
+      "after": [
+        "<plugcs>"
+      ]
     }
   ],
 
@@ -430,6 +455,15 @@
       "before": [
         "k",
         "j"
+      ],
+      "after": [
+        "<Esc>"
+      ]
+    },
+    {
+      "before": [
+        "ㅏ",
+        "ㅓ"
       ],
       "after": [
         "<Esc>"
@@ -505,6 +539,82 @@
         "P"
       ]
     },
+    {
+      "before": [
+        "g",
+        "h"
+      ],
+      "after": [
+        "0"
+      ]
+    },
+    {
+      "before": [
+        "$"
+      ],
+      "after": [
+        "g",
+        "_"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "l"
+      ],
+      "after": [
+        "g",
+        "_"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "s"
+      ],
+      "after": [
+        "^"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "t"
+      ],
+      "after": [
+        "H"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "c"
+      ],
+      "after": [
+        "M"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "b"
+      ],
+      "after": [
+        "L"
+      ]
+    },
+    {
+      "before": [
+        "m",
+        "s"
+      ],
+      "after": [
+        "S"
+      ]
+    }
+  ],
+
+  "vim.operatorPendingModeKeyBindingsNonRecursive": [
     {
       "before": [
         "g",

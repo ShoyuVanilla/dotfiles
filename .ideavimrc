@@ -132,7 +132,7 @@ let g:WhichKeyDesc_window = "<leader>w +window"
     let g:WhichKeyDesc_window_jetbrains_tool_focus_recent = "<leader>wjf Focus Recent"
     nnoremap <leader>wjf :action JumpToLastWindow<CR>
 
-" Movements
+" Unimpaired
 let g:WhichKeyDesc_prev_diagnostic = "[d Prev Diagnostic"
 nnoremap [d :action GotoPreviousError<CR>
 
@@ -153,6 +153,14 @@ vnoremap [f :action MethodUp<CR>
 let g:WhichKeyDesc_next_method = "]m Next Method"
 nnoremap ]f :action MethodDown<CR>
 vnoremap ]f :action MethodDown<CR>
+
+let g:WhichKeyDesc_prev_change = "[g Prev Change"
+nnoremap [g :action VcsShowPrevChangeMarker<CR>
+vnoremap [g :action VcsShowPrevChangeMarker<CR>
+
+let g:WhichKeyDesc_next_change = "]g Next Change"
+nnoremap ]g :action VcsShowNextChangeMarker<CR>
+vnoremap ]g :action VcsShowNextChangeMarker<CR>
 
 let g:WhichKeyDesc_prev_tab = "[b Prev Buffer"
 nnoremap [b :action PreviousTab<CR>
@@ -189,6 +197,10 @@ let g:WhichKeyDesc_code = "<leader>c +code"
 
   let g:WhichKeyDesc_code_action = "<leader>ca Source Action"
   nnoremap <leader>ca :action ShowIntentionActions<CR>
+
+  let g:WhichKeyDesc_code_toggle_comment = "<leader>cc Toggle Comment"
+  nnoremap <leader>cc CommentByLineComment<CR>
+  vnoremap <leader>cc CommentByLineComment<CR>
 
 let g:WhichKeyDesc_rename_symbol = "<leader>r Rename Symbol"
 nnoremap <leader>r :action RenameElement<CR>
@@ -232,7 +244,7 @@ let g:WhichKeyDesc_goto_screen_center = "gc Goto Screen Center"
 nnoremap gc M
 vnoremap gc M
 
-let g:WhichKeyDesc_goto_screen_center = "gc Goto Screen Bottom"
+let g:WhichKeyDesc_goto_screen_bottom = "gc Goto Screen Bottom"
 nnoremap gb L
 vnoremap gb L
 
@@ -287,13 +299,6 @@ let g:WhichKeyDesc_zen = "<leader>z +zen mode"
   let g:WhichKeyDesc_zen_toggle_distraction_free_mode = "<leader>zd Toggle Distraction Free Mode"
   nnoremap <leader>zd :action ToggleDistractionFreeMode<CR>
 
-" Commentary
-let g:WhichKeyDesc_commentary = "gc +commentary"
-
-  let g:WhichKeyDesc_commentary_toggle_line = "gcc Toggle Current Line"
-
-  let g:WhichKeyDesc_commentary_toggle_adjacent = "gcc Toggle Current and Adjacent Lines"
-
 " Clipboard
 let g:WhichKeyDesc_clipboard_yank = "<leader>y Yank to Clipboard"
 nnoremap <leader>y "*y
@@ -303,6 +308,12 @@ let g:WhichKeyDesc_clipboard_paste_after = "<leader>p Paste Clipboard After"
 nnoremap <leader>p "*p
 vnoremap <leader>p "*p
 
-let g:WhichKeyDesc_clipboard_paste_before = "<leader>p Paste Clipboard Before"
+let g:WhichKeyDesc_clipboard_paste_before = "<leader>P Paste Clipboard Before"
 nnoremap <leader>P "*P
 vnoremap <leader>P "*P
+
+" Surround
+nmap ms ys
+nmap md ds
+nmap mr cs
+vmap ms S
