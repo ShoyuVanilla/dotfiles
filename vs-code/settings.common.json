@@ -1,24 +1,58 @@
 {
   "diffEditor.wordWrap": "on",
 
+  "editor.cursorSurroundingLines": 4,
   "editor.guides.bracketPairs": true,
   "editor.guides.indentation": true,
   "editor.inlayHints.enabled": "on",
+  "editor.lineNumbers": "relative",
+  "editor.minimap.enabled": false,
   "editor.wordWrap": "on",
   "editor.renderWhitespace": "all",
-  "editor.cursorSurroundingLines": 4,
-  "editor.lineNumbers": "relative",
+
+  "files.eol": "\n",
+
+  "workbench.layoutControl.enabled": false,
+  "window.commandCenter": false,
+  "window.menuBarVisibility": "compact",
 
   "problems.showCurrentInStatus": true,
   "problems.sortOrder": "severity",
 
-  "files.eol": "\n",
+  "terminal.integrated.defaultProfile.windows": "Windows PowerShell",
+  "terminal.integrated.fontFamily": "FiraCode Nerd Font Mono",
 
   "[rust]": {
     "editor.formatOnSave": true
   },
   "rust-analyzer.checkOnSave": true,
   "rust-analyzer.check.command": "clippy",
+
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2
+  },
+  "javascript.format.semicolons": "remove",
+  "javascript.inlayHints.enumMemberValues.enabled": true,
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
+  "javascript.inlayHints.parameterNames.enabled": "all",
+  "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "javascript.inlayHints.propertyDeclarationTypes.enabled": true,
+  "javascript.inlayHints.variableTypes.enabled": true,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
+  "typescript.format.semicolons": "remove",
+  "typescript.inlayHints.parameterTypes.enabled": true,
+  "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
+  "typescript.inlayHints.variableTypes.enabled": true,
+  "typescript.locale": "en",
 
   "extensions.experimental.affinity": {
     "vscodevim.vim": 1
