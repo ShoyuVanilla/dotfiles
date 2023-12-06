@@ -12,7 +12,9 @@
 
   "files.eol": "\n",
 
+  "workbench.colorTheme": "Catppuccin Mocha",
   "workbench.layoutControl.enabled": false,
+  "workbench.iconTheme": "catppuccin-mocha",
   "window.commandCenter": false,
   "window.menuBarVisibility": "compact",
 
@@ -53,6 +55,10 @@
   "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
   "typescript.inlayHints.variableTypes.enabled": true,
   "typescript.locale": "en",
+
+  "[python]": {
+    "editor.formatOnType": true
+  },
 
   "extensions.experimental.affinity": {
     "vscodevim.vim": 1
