@@ -1,5 +1,17 @@
-# winget install -e --id Microsoft.PowerShell --source winget
-# Set-ExecutionPolicy -ExecutionPolicy Unrestricted
+$ErrorActionPreference = "Stop"
 
-New-Item -ItemType Directory -Force -Path (Split-Path $PROFILE)
-New-Item -ItemType SymbolicLink -Path $PROFILE -Target (Join-Path -Path $PSScriptRoot -ChildPath Microsoft.PowerShell_profile.ps1)
+$ImplPath = Join-Path -Path $PSScriptRoot -ChildPath init.impls.ps1
+
+if ((winget list) -match 'Microsoft\.PowerShell.+ winget$')
+{
+    winget install -e --id Microsoft.PowerShell --source winget
+    $env:Path=(
+        [System.Environment]::GetEnvironmentVariable("Path", "Machine"),
+        [System.Environment]::GetEnvironmentVariable("Path", "User")
+    ) -match '.' -join ';'
+    pwsh $ImplPath
+}
+else
+{
+    &$ImplPath
+}
