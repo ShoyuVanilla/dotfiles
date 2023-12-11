@@ -19,3 +19,8 @@
     - aliases
 - Migrate into nix
 - Platform profiles
+- Surfingkeys
+
+## Windows
+
+- `scoop install less`

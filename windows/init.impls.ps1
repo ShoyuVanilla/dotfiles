@@ -17,10 +17,14 @@ if (-not(Check-Command -cmdname 'scoop'))
 }
 
 # Install Rust
-if (-not(Check-Command -cmdname 'rustc'))
+if (-not(Check-Command -cmdname 'rustup'))
 {
-    winget install Microsoft.VisualStudio.2022.Community --silent --override "--wait --quiet --add ProductLang En-us --add Microsoft.VisualStudio.Workload.NativeDesktop --includeRecommended"
-    winget install Rustlang.Rustup
+    $WebClient = New-Object System.Net.WebClient
+    $Url = 'https://win.rustup.rs/x86_64'
+    $InstallFile = Join-Path -Path $PSScriptRoot -ChildPath rustup-init.exe
+    $WebClient.DownloadFile($Url, $InstallFile)
+    & $InstallFile
+    Remove-Item -Path $InstallFile
 }
 
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scpoe CurrentUser
