@@ -61,5 +61,5 @@ def extract_keys(src):
 def main():
     extract_keys(sys.stdin)
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
