@@ -5,10 +5,6 @@ function Check-Command($cmdname)
     return [bool](Get-Command -Name $cmdname -ErrorAction SilentlyContinue)
 }
 
-# Symlink PowerShell Profile
-New-Item -ItemType Directory -Force -Path (Split-Path $PROFILE)
-Start-Process pwsh -Verb RunAs -ArgumentList "New-Item -ItemType SymbolicLink -Path $($PROFILE) -Target $(Join-Path -Path $PSScriptRoot -ChildPath Microsoft.PowerShell_profile.ps1)"
-
 # Install Scoop
 if (-not(Check-Command -cmdname 'scoop'))
 {
@@ -30,3 +26,7 @@ if (-not(Check-Command -cmdname 'rustup'))
 }
 
 scoop import $(Join-Path -Path $PSScriptRoot -ChildPath scoopfile.json)
+
+# Symlink PowerShell Profile
+New-Item -ItemType Directory -Force -Path (Split-Path $PROFILE)
+sudo New-Item -ItemType SymbolicLink -Path `$PROFILE -Target $(Join-Path -Path $PSScriptRoot -ChildPath Microsoft.PowerShell_profile.ps1)
