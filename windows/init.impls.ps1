@@ -7,24 +7,26 @@ function Check-Command($cmdname)
 
 # Symlink PowerShell Profile
 New-Item -ItemType Directory -Force -Path (Split-Path $PROFILE)
-New-Item -ItemType SymbolicLink -Path $PROFILE -Target (Join-Path -Path $PSScriptRoot -ChildPath Microsoft.PowerShell_profile.ps1)
+Start-Process pwsh -Verb RunAs -ArgumentList "New-Item -ItemType SymbolicLink -Path $($PROFILE) -Target $(Join-Path -Path $PSScriptRoot -ChildPath Microsoft.PowerShell_profile.ps1)"
 
 # Install Scoop
 if (-not(Check-Command -cmdname 'scoop'))
 {
     Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
     irm get.scoop.sh | iex
+    $env:Path=(
+        [System.Environment]::GetEnvironmentVariable("Path", "Machine"),
+        [System.Environment]::GetEnvironmentVariable("Path", "User")
+    ) -match '.' -join ';'
+    Start-Process pwsh -Verb RunAs -ArgumentList "Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser"
+    scoop install git
 }
 
 # Install Rust
 if (-not(Check-Command -cmdname 'rustup'))
 {
-    $WebClient = New-Object System.Net.WebClient
-    $Url = 'https://win.rustup.rs/x86_64'
-    $InstallFile = Join-Path -Path $PSScriptRoot -ChildPath rustup-init.exe
-    $WebClient.DownloadFile($Url, $InstallFile)
-    & $InstallFile
-    Remove-Item -Path $InstallFile
+    winget install Microsoft.VisualStudio.2022.Community --silent --override "--wait --quiet --add ProductLang En-us --add Microsoft.VisualStudio.Workload.NativeDesktop --includeRecommended"
+    winget install Rustlang.Rustup
 }
 
-Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scpoe CurrentUser
+scoop import $(Join-Path -Path $PSScriptRoot -ChildPath scoopfile.json)
