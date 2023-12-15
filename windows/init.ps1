@@ -2,13 +2,11 @@ $ErrorActionPreference = "Stop"
 
 $ImplPath = Join-Path -Path $PSScriptRoot -ChildPath init.impls.ps1
 
-if ( (winget list) -match 'Microsoft\.PowerShell.+ winget$' )
-{
+if ( (winget list) -match 'Microsoft\.PowerShell.+ winget$' ) {
     Write-Host 'Powershell is installed'
     &$ImplPath
 }
-else
-{
+else {
     Invoke-WebRequest -Uri https://aka.ms/getwinget -OutFile winget.msixbundle
     Add-AppxPackage winget.msixbundle
     Remove-Item -Path winget.msixbundle
