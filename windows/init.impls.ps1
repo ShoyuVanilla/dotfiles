@@ -1,13 +1,11 @@
 $ErrorActionPreference = "Stop"
 
-function Check-Command($cmdname)
-{
+function Check-Command($cmdname) {
     return [bool](Get-Command -Name $cmdname -ErrorAction SilentlyContinue)
 }
 
 # Install Scoop
-if (-not(Check-Command -cmdname 'scoop'))
-{
+if ( -not(Check-Command -cmdname 'scoop') ) {
     Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
     irm get.scoop.sh | iex
     $env:Path=(
@@ -19,8 +17,7 @@ if (-not(Check-Command -cmdname 'scoop'))
 }
 
 # Install Rust
-if (-not(Check-Command -cmdname 'rustup'))
-{
+if ( -not(Check-Command -cmdname 'rustup') ) {
     winget install Microsoft.VisualStudio.2022.Community --silent --override "--wait --quiet --add ProductLang En-us --add Microsoft.VisualStudio.Workload.NativeDesktop --includeRecommended"
     winget install Rustlang.Rustup
 }
