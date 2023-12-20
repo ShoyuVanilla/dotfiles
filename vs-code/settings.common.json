@@ -60,6 +60,11 @@
     "editor.formatOnType": true
   },
 
+  "[kdl]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2
+  },
+
   "extensions.experimental.affinity": {
     "vscodevim.vim": 1
   },

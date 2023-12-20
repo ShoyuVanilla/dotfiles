@@ -6,7 +6,7 @@ color-modes = true
 cursorline = true
 default-line-ending = "lf"
 line-number = "relative"
-mouse = false
+scroll-lines = 0
 
 [editor.cursor-shape]
 insert = "bar"
