@@ -18,23 +18,32 @@ def mergedicts(dict1, dict2):
             yield (k, dict2[k])
 
 def apply_settings(src_path, dest_path, platform_name):
-    common = json.load(open(src_path.joinpath('settings.common.json')))
-    platform_name = json.load(open(src_path.joinpath('settings.{}.json'.format(platform_name))))
-    src = dict(mergedicts(common, platform_name))
+    common = json.load(open(src_path.joinpath('settings.common.json'), encoding='utf-8'))
+    platform_file = src_path.joinpath('settings.{}.json'.format(platform_name))
+    src = common
+    if platform_file.is_file():
+        src = dict(mergedicts(common, json.load(open(platform_file, encoding='utf-8'))))
+    os.makedirs(dest_path, exist_ok=True)
     dest = dest_path.joinpath('settings.json')
-    json.dump(src, open(dest, 'w'), indent=2, sort_keys=True)
+    json.dump(src, open(dest, 'w', encoding='utf-8'), indent=2, sort_keys=True)
 
 def apply_keybindings(src_path, dest_path, platform_name):
-    print(src_path)
-    print(dest_path)
+    src = json.load(open(src_path.joinpath('keybindings.common.json'), encoding='utf-8'))
+    platform_file = src_path.joinpath('keybindings.{}.json'.format(platform_name))
+    if platform_file.is_file():
+        src.append(json.load(open(platform_file, encoding='utf-8')))
+    os.makedirs(dest_path, exist_ok=True)
+    dest = dest_path.joinpath('keybindings.json')
+    json.dump(src, open(dest, 'w', encoding='utf-8'), indent=2, sort_keys=True)
 
 def install_extensions(src_path, remove_undefined):
     extensions_local = set(
         subprocess
-            .check_output(['code', '--list-extensions'])
-            .decode('utf-8') # Need to check if valid on Windows
+            .check_output(['code', '--list-extensions'], shell=True)
+            .decode('utf-8')
             .splitlines()
     )
+    print(extensions_local)
     extensions_defined = src_path.joinpath('extensions')
     extensions_defined = set(open(extensions_defined, 'r').read().splitlines())
     to_install = extensions_defined - extensions_local
@@ -79,7 +88,7 @@ def main():
     else:
         sys.exit('Unknown Platform: {}', platform_name)
 
-    # install_extensions(src_path, True)
+    install_extensions(src_path, True)
     apply_settings(src_path, dest_path, platform_name)
     apply_keybindings(src_path, dest_path, platform_name)
 

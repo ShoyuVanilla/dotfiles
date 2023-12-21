@@ -22,6 +22,11 @@ if ( -not(Search-Command -cmdname 'rustup') ) {
     winget install Rustlang.Rustup
 }
 
+# Install vs-code
+if ( -not(Search-Command -cmdname 'code') ) {
+    winget install Microsoft.VisualStudioCode
+}
+
 scoop import $(Join-Path -Path $PSScriptRoot -ChildPath scoopfile.json)
 
 # Install pyenv
