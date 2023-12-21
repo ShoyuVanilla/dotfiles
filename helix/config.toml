@@ -84,12 +84,6 @@ D = "wonly"
 "minus" = "hsplit"
 "_" = "hsplit"
 
-[keys.normal."space"."b"]
-c = ":buffer-close"
-C = ":buffer-close-others"
-d = ":buffer-close!"
-D = ":buffer-close-others!"
-
 [keys.normal."space"."c"]
 c = ["toggle_comments"]
 f = [":format :write"]

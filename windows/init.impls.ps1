@@ -1,13 +1,13 @@
 $ErrorActionPreference = "Stop"
 
-function Check-Command($cmdname) {
+function Search-Command($cmdname) {
     return [bool](Get-Command -Name $cmdname -ErrorAction SilentlyContinue)
 }
 
 # Install Scoop
-if ( -not(Check-Command -cmdname 'scoop') ) {
+if ( -not(Search-Command -cmdname 'scoop') ) {
     Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-    irm get.scoop.sh | iex
+    Invoke-RestMethod get.scoop.sh | Invoke-Expression
     $env:Path=(
         [System.Environment]::GetEnvironmentVariable("Path", "Machine"),
         [System.Environment]::GetEnvironmentVariable("Path", "User")
@@ -17,13 +17,16 @@ if ( -not(Check-Command -cmdname 'scoop') ) {
 }
 
 # Install Rust
-if ( -not(Check-Command -cmdname 'rustup') ) {
+if ( -not(Search-Command -cmdname 'rustup') ) {
     winget install Microsoft.VisualStudio.2022.Community --silent --override "--wait --quiet --add ProductLang En-us --add Microsoft.VisualStudio.Workload.NativeDesktop --includeRecommended"
     winget install Rustlang.Rustup
 }
 
 scoop import $(Join-Path -Path $PSScriptRoot -ChildPath scoopfile.json)
 
+# Install pyenv
+Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1" -OutFile "./install-pyenv-win.ps1"; &"./install-pyenv-win.ps1"
+
 # Symlink PowerShell Profile
 New-Item -ItemType Directory -Force -Path (Split-Path $PROFILE)
-sudo New-Item -ItemType SymbolicLink -Path `$PROFILE -Target $(Join-Path -Path $PSScriptRoot -ChildPath Microsoft.PowerShell_profile.ps1)
+sudo New-Item -ItemType SymbolicLink -Path `$PROFILE -Target $(Join-Path -Path $PSScriptRoot -ChildPath Microsoft.PowerShell_profile.ps1) -Force
