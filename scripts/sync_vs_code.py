@@ -1,18 +1,34 @@
+import json
 import os
+from pathlib import Path
 import platform
 import subprocess
 import sys
-from pathlib import Path
 
-def apply_settings(src_path, dest_path):
+def mergedicts(dict1, dict2):
+    for k in set(dict1.keys()).union(dict2.keys()):
+        if k in dict1 and k in dict2:
+            if isinstance(dict1[k], dict) and isinstance(dict2[k], dict):
+                yield (k, dict(mergedicts(dict1[k], dict2[k])))
+            else:
+                yield (k, dict2[k])
+        elif k in dict1:
+            yield (k, dict1[k])
+        else:
+            yield (k, dict2[k])
+
+def apply_settings(src_path, dest_path, platform_name):
+    common = json.load(open(src_path.joinpath('settings.common.json')))
+    platform_name = json.load(open(src_path.joinpath('settings.{}.json'.format(platform_name))))
+    src = dict(mergedicts(common, platform_name))
+    dest = dest_path.joinpath('settings.json')
+    json.dump(src, open(dest, 'w'), indent=2, sort_keys=True)
+
+def apply_keybindings(src_path, dest_path, platform_name):
     print(src_path)
     print(dest_path)
 
-def apply_keybindings(src_path, dest_path):
-    print(src_path)
-    print(dest_path)
-
-def sync_extensions(src_path, remove_undefined):
+def install_extensions(src_path, remove_undefined):
     extensions_local = set(
         subprocess
             .check_output(['code', '--list-extensions'])
@@ -33,16 +49,17 @@ def sync_extensions(src_path, remove_undefined):
 def main():
     script_path = Path(__file__)
     src_path = script_path.parent.parent.joinpath('vs-code')
-    os_name = platform.system()
+    platform_name = platform.system()
 
     dest_path = None
-    if os_name.startswith('Windows'):
+    if platform_name.startswith('Windows'):
         dest_path = (
             Path(os.getenv('APPDATA'))
                 .joinpath('Code')
                 .joinpath('User')
         )
-    elif os_name.startswith('Darwin'):
+        platform_name = 'windows'
+    elif platform_name.startswith('Darwin'):
         dest_path = (
             Path(os.getenv('HOME'))
                 .joinpath('Library')
@@ -50,19 +67,21 @@ def main():
                 .joinpath('Code')
                 .joinpath('User')
         )
-    elif os_name.startswith('Linux'):
+        platform_name = 'macos'
+    elif platform_name.startswith('Linux'):
         dest_path = (
             Path(os.getenv('HOME'))
                 .joinpath('.config')
                 .joinpath('Code')
                 .joinpath('User')
         )
+        platform_name = 'linux'
     else:
-        sys.exit('Unsupported Platform: {}', os_name)
+        sys.exit('Unknown Platform: {}', platform_name)
 
-    sync_extensions(src_path, True)
-    apply_settings(src_path, dest_path)
-    apply_keybindings(src_path, dest_path)
+    # install_extensions(src_path, True)
+    apply_settings(src_path, dest_path, platform_name)
+    apply_keybindings(src_path, dest_path, platform_name)
 
 if __name__ == '__main__':
     main()
