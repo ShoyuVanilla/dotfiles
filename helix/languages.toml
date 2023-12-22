@@ -5,17 +5,17 @@ inlayHints.closureCaptureHints.enable = true
 inlayHints.closureReturnTypeHints.enable = "always"
 
 
-[[languages]]
+[[language]]
 name = "go"
 auto-format = true
 formatter = { command = "goimports" }
 
 
-[[languages]]
+[[language]]
 name = "c-sharp"
 language-servers = ["csharp-ls"]
 auto-format = true
-formatter = { command = "csharpier" }
+formatter = { command = "dotnet", args = ["csharpier"] }
 
 
 [[language]]
