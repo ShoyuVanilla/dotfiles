@@ -21,6 +21,7 @@ if ( -not(Search-Command -cmdname 'rustup') ) {
     winget install Microsoft.VisualStudio.2022.Community --silent --override "--wait --quiet --add ProductLang En-us --add Microsoft.VisualStudio.Workload.NativeDesktop --includeRecommended"
     winget install Rustlang.Rustup
 }
+rustup component add rust-analyzer
 
 # Install vs-code
 if ( -not(Search-Command -cmdname 'code') ) {
