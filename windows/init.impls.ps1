@@ -35,3 +35,7 @@ Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/pyenv
 # Symlink PowerShell Profile
 New-Item -ItemType Directory -Force -Path (Split-Path $PROFILE)
 sudo New-Item -ItemType SymbolicLink -Path `$PROFILE -Target $(Join-Path -Path $PSScriptRoot -ChildPath Microsoft.PowerShell_profile.ps1) -Force
+
+#Symlink Helix Settings
+sudo New-Item -ItemType SymbolicLink -Path $(Join-Path -Path $HOME -ChildPath 'scoop\persist\helix\config.toml') -Target $(Join-Path -Path (Get-Item -Path $PSScriptRoot).Parent -ChildPath 'helix\config.toml') -Force
+sudo New-Item -ItemType SymbolicLink -Path $(Join-Path -Path $HOME -ChildPath 'scoop\persist\helix\languages.toml') -Target $(Join-Path -Path (Get-Item -Path $PSScriptRoot).Parent -ChildPath 'helix\languages.toml') -Force

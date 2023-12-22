@@ -2,23 +2,27 @@ import json
 import re
 import sys
 
+
 class Node:
     def __init__(self):
         self.keys = []
-        self.desc = ''
+        self.desc = ""
         self.children = []
+
 
 def add_key_recurse(acc, prefix: str, node: Node):
     for key in node.keys:
         full_key = key
         if len(prefix) > 0:
-            full_key = '.'.join([prefix, key]) 
+            full_key = ".".join([prefix, key])
         acc[full_key] = node.desc.strip()
         for child in node.children:
             add_key_recurse(acc, full_key, child)
 
-list_pattern = re.compile(r'^([ ]*)- ((`[^`]+`,[ ]?)*(`[^`]+`))(.*)$')
-table_pattern = re.compile(r'^\|[ ]*`([^`]+)`[ ]*\|([^|]*)\|\s*$')
+
+list_pattern = re.compile(r"^([ ]*)- ((`[^`]+`,[ ]?)*(`[^`]+`))(.*)$")
+table_pattern = re.compile(r"^\|[ ]*`([^`]+)`[ ]*\|([^|]*)\|\s*$")
+
 
 def extract_keys(src):
     nodes = []
@@ -37,8 +41,8 @@ def extract_keys(src):
             continue
         match = matches[-1]
         indent, keys, _, _, desc = match.groups()
-        keys = keys.replace('`', '').replace(' ', '').split(',')
-        indent = len(str(indent or '')) // 2
+        keys = keys.replace("`", "").replace(" ", "").split(",")
+        indent = len(str(indent or "")) // 2
         node = Node()
         node.keys = keys
         node.desc = desc
@@ -55,11 +59,13 @@ def extract_keys(src):
         context.append(node)
 
     for node in nodes:
-        add_key_recurse(dic, '', node)
+        add_key_recurse(dic, "", node)
     print(json.dumps(dic, indent=2))
+
 
 def main():
     extract_keys(sys.stdin)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
