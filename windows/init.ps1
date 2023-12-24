@@ -4,7 +4,7 @@ $ImplPath = Join-Path -Path $PSScriptRoot -ChildPath init.impls.ps1
 
 if ( (winget list) -match 'Microsoft\.PowerShell.+ winget$' ) {
     Write-Host 'Powershell is installed'
-    &$ImplPath
+    & $ImplPath
 }
 else {
     Invoke-WebRequest -Uri https://aka.ms/getwinget -OutFile winget.msixbundle
