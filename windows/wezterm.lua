@@ -11,7 +11,8 @@ config.default_prog = { 'pwsh', '-l' }
 config.window_decorations = 'RESIZE'
 config.font = wezterm.font 'FiraCode Nerd Font Mono'
 config.window_close_confirmation = 'NeverPrompt'
-
+config.color_scheme = 'Gruvbox Material (Gogh)'
+config.window_background_opacity = 0.8
 
 -- Maximize on launch
 wezterm.on('gui-attached', function(domain)
