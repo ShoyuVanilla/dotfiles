@@ -15,34 +15,44 @@ Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 # Autocompletion for arrow keys
 Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
-# FNM - Fast Node Managr
-fnm env --use-on-cd | Out-String | Invoke-Expression
 
 # Aliases
 Set-Alias -Name df -Value duf
 
 Set-Alias -Name ls -Value eza
-Function Fll {eza -l --group-directories-first --sort=ext}
+function Fll {eza -l --group-directories-first --sort=ext}
 Set-Alias -Name ll -Value Fll
-Function Fld {eza -lD}
+function Fld {eza -lD}
 Set-Alias -Name ld -Value Fld # List Directories
-Function Flf {eza -lf --sort=ext}
+function Flf {eza -lf --sort=ext}
 Set-Alias -Name lf -Value Flf # List Files
-Function Fla {eza -al --group-directories-first --sort=ext}
+function Fla {eza -al --group-directories-first --sort=ext}
 Set-Alias -Name la -Value Fla # List All
-Function Flt {eza -al --sort=modified}
+function Flt {eza -al --sort=modified}
 Set-Alias -Name lt -Value Flt # List by Time
 
-function Ps-Kill() {
-    $targetPid = (procs --color always | 
-        fzf -m --ansi --header="$(Get-Date)" --header-lines=2 | 
+function Stop-Process() {
+    $targetPid = (procs --color always |
+        fzf -m --ansi --header="$(Get-Date)" --header-lines=2 |
         ForEach-Object { $_.Split(' ')[1] })
 
-    if ($targetPid -ne $null) {
+    if ($null -ne $targetPid) {
         Stop-Process -Force -Id $targetPid
     }
 }
-Set-Alias -Name pskill -Value Ps-Kill
+Set-Alias -Name pskill -Value Stop-Process
+
+function Export-Scoop() {
+    $scoopfilePath = Join-Path `
+        -Path (Split-Path -Parent (Get-Item -Path $PSCommandPath | Select-Object -ExpandProperty Target)) `
+        -ChildPath scoopfile.json
+    scoop export |
+        jq 'walk(if type=="object" then to_entries | sort_by(.key) | from_entries else . end)' > `
+        $scoopfilePath
+}
+
+# FNM - Fast Node Managr
+fnm env --use-on-cd | Out-String | Invoke-Expression
 
 # zoxide for jumping directories
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
