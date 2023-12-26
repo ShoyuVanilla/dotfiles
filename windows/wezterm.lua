@@ -84,6 +84,10 @@ config.key_tables = {
       mods = 'SHIFT',
       action = act.ActivateTabRelative(1),
     },
+    {
+      key = 'Tab',
+      action = act.ActivateLastTab,
+    },
 
     {
       key = 'j',

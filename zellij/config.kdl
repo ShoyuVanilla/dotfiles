@@ -40,21 +40,7 @@ keybinds clear-defaults=true {
     bind "l" "Right" { MoveFocus "Right"; }
     bind "H" "K" { GoToPreviousTab; }
     bind "J" "L"  { GoToNextTab; }
-    bind "Alt j" "Alt Down" { ScrollDown; }
-    bind "Alt k" "Alt Up" { ScrollUp; }
-    bind "Ctrl f" { PageScrollDown; }
-    bind "Ctrl b" { PageScrollUp; }
-    bind "Ctrl d" { HalfPageScrollDown; }
-    bind "Ctrl u" { HalfPageScrollUp; }
-    bind "Ctrl n" { NewPane; }
-    bind "Ctrl z" { ToggleFocusFullscreen; }
-    bind "Alt n" { NewTab; SwitchToMode "Tmux"; }
-    bind "x" { CloseFocus; }
-    bind "X" { CloseTab; }
-    bind "Alt =" "Alt +" { Resize "Increase"; }
-    bind "Alt -" { Resize "Decrease"; }
-    bind "Alt [" { PreviousSwapLayout; }
-    bind "Alt ]" { NextSwapLayout; }
+    bind "Tab" { ToggleTab; }
     bind "1" { GoToTab 1; }
     bind "2" { GoToTab 2; }
     bind "3" { GoToTab 3; }
@@ -64,7 +50,21 @@ keybinds clear-defaults=true {
     bind "7" { GoToTab 7; }
     bind "8" { GoToTab 8; }
     bind "9" { GoToTab 9; }
-    bind "Tab" { ToggleTab; }
+    bind "Alt j" "Alt Down" { ScrollDown; }
+    bind "Alt k" "Alt Up" { ScrollUp; }
+    bind "Ctrl f" { PageScrollDown; }
+    bind "Ctrl b" { PageScrollUp; }
+    bind "Ctrl d" { HalfPageScrollDown; }
+    bind "Ctrl u" { HalfPageScrollUp; }
+    bind "Ctrl z" { ToggleFocusFullscreen; }
+    bind "n" { NewPane; }
+    bind "N" { NewTab; }
+    bind "x" { CloseFocus; }
+    bind "X" { CloseTab; }
+    bind "Alt =" "Alt +" { Resize "Increase"; }
+    bind "Alt -" { Resize "Decrease"; }
+    bind "Alt [" { PreviousSwapLayout; }
+    bind "Alt ]" { NextSwapLayout; }
   }
   tmux {
     bind "Esc" { SwitchToMode "Locked"; }
