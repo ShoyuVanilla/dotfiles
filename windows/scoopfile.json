@@ -9,6 +9,13 @@
     },
     {
       "Info": "",
+      "Name": "adb",
+      "Source": "main",
+      "Updated": "2024-01-02T08:56:13.6965742+09:00",
+      "Version": "34.0.5"
+    },
+    {
+      "Info": "",
       "Name": "alacritty",
       "Source": "extras",
       "Updated": "2023-12-13T23:49:40.6953462+09:00",
@@ -247,6 +254,13 @@
     },
     {
       "Info": "",
+      "Name": "openssh",
+      "Source": "main",
+      "Updated": "2023-12-25T19:00:15.4314826+09:00",
+      "Version": "9.5.0.0p1"
+    },
+    {
+      "Info": "",
       "Name": "powertoys",
       "Source": "extras",
       "Updated": "2023-12-23T16:33:10.9914971+09:00",
@@ -381,16 +395,16 @@
   ],
   "buckets": [
     {
-      "Manifests": 1890,
+      "Manifests": 1892,
       "Name": "extras",
       "Source": "https://github.com/ScoopInstaller/Extras",
-      "Updated": "2023-12-24T13:24:58+09:00"
+      "Updated": "2024-01-02T21:30:17+09:00"
     },
     {
-      "Manifests": 1267,
+      "Manifests": 1268,
       "Name": "main",
       "Source": "https://github.com/ScoopInstaller/Main",
-      "Updated": "2023-12-24T13:25:21+09:00"
+      "Updated": "2024-01-02T21:29:49+09:00"
     },
     {
       "Manifests": 327,
