@@ -63,6 +63,9 @@ L = "goto_next_buffer"
 "{" = "goto_prev_paragraph"
 "}" = "goto_next_paragraph"
 
+[keys.normal."space"]
+u = ":reset-diff-change"
+
 [keys.select]
 "C-/" = "toggle_comments"
 "{" = "goto_prev_paragraph"
