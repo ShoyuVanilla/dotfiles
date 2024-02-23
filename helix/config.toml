@@ -71,6 +71,12 @@ u = ":reset-diff-change"
 "{" = "goto_prev_paragraph"
 "}" = "goto_next_paragraph"
 
+[keys.normal.Z]
+C-h = "jump_view_left"
+C-j = "jump_view_down"
+C-k = "jump_view_up"
+C-l = "jump_view_right"
+
 [keys.normal."C-w"]
 d = "wclose"
 D = "wonly"
