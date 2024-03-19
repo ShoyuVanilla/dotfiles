@@ -1,6 +1,6 @@
 [language-server.rust-analyzer.config]
 check = { command = "clippy" }
-rust.analyzerTargetDir = true
+cargo.targetDir = true
 inlayHints.bindingModeHints.enable = true
 inlayHints.closureCaptureHints.enable = true
 inlayHints.closureReturnTypeHints.enable = "always"
