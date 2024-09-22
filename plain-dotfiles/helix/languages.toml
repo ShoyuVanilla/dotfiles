@@ -1,0 +1,87 @@
+[language-server.rust-analyzer.config]
+check = { command = "clippy" }
+cargo.targetDir = true
+inlayHints.bindingModeHints.enable = true
+inlayHints.closureCaptureHints.enable = true
+inlayHints.closureReturnTypeHints.enable = "always"
+inlayHints.maxLength = 100
+
+
+[[language]]
+name = "go"
+auto-format = true
+formatter = { command = "goimports" }
+
+
+[[language]]
+name = "c-sharp"
+language-servers = ["csharp-ls"]
+auto-format = true
+formatter = { command = "dotnet", args = ["csharpier"] }
+
+
+[[language]]
+name = "python"
+language-servers = ["pyright", "ruff"]
+auto-format = true
+
+[language.formatter]
+command = "black"
+args = ["--line-length", "88", "--quiet", "-"]
+
+[language-server.pyright.config.python.analysis]
+typeCheckingMode = "basic"
+
+[language-server.ruff]
+command = "ruff-lsp"
+
+[language-server.ruff.config.settings]
+args = ["--ignore", "E501"]
+
+
+[[language]]
+name = "bash"
+auto-format = true
+formatter = { command = "shfmt" }
+
+
+[[language]]
+name = "toml"
+auto-format = true
+formatter = { command = "taplo", args = ["fmt", "-"] }
+
+
+[[language]]
+name = "kdl"
+indent = { tab-width = 2, unit = "  " }
+
+
+[[language]]
+name = "html"
+language-servers = ["vscode-html-language-server", "tailwindcss-ls"]
+
+
+[[language]]
+name = "css"
+language-servers = ["vscode-css-language-server", "tailwindcss-ls"]
+
+
+[[language]]
+name = "jsx"
+language-servers = ["typescript-language-server", "tailwindcss-ls"]
+
+
+[[language]]
+name = "tsx"
+language-servers = ["typescript-language-server", "tailwindcss-ls"]
+
+
+[[language]]
+name = "svelte"
+language-servers = ["svelteserver", "tailwindcss-ls"]
+
+
+[[language]]
+name = "typst"
+auto-format = true
+formatter = { command = "typstfmt" }

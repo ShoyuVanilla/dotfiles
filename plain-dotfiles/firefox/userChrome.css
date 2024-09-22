@@ -1,0 +1,10 @@
+.titlebar-buttonbox-container,
+.titlebar-spacer,
+toolbarbutton,
+image.tab-close-button.close-icon {
+    display: none !important;
+}
+
+#nav-bar {
+    visibility: collapse !important;
+}

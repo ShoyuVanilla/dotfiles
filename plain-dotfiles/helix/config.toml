@@ -1,0 +1,101 @@
+theme = "catppuccin_mocha"
+
+[editor]
+bufferline = "always"
+color-modes = true
+cursorline = true
+default-line-ending = "lf"
+line-number = "relative"
+scroll-lines = 0
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "block"
+
+[editor.file-picker]
+hidden = false
+
+[editor.indent-guides]
+render = true
+
+[editor.lsp]
+display-messages = true
+display-inlay-hints = true
+
+[editor.soft-wrap]
+enable = true
+wrap-indicator = ""
+
+[editor.statusline]
+left = [
+  "mode",
+  "spinner",
+  "file-name",
+  "read-only-indicator",
+  "file-modification-indicator",
+  "diagnostics",
+]
+right = [
+  "version-control",
+  "workspace-diagnostics",
+  "position",
+  "total-line-numbers",
+  "position-percentage",
+  "file-encoding",
+  "file-line-ending",
+]
+
+[editor.whitespace]
+render = "all"
+
+[keys.insert]
+j = { k = "normal_mode" }
+
+[keys.normal]
+C-h = "jump_view_left"
+C-j = "jump_view_down"
+C-k = "jump_view_up"
+C-l = "jump_view_right"
+H = "goto_previous_buffer"
+L = "goto_next_buffer"
+"C-/" = "toggle_comments"
+"{" = "goto_prev_paragraph"
+"}" = "goto_next_paragraph"
+
+[keys.normal."space"]
+u = ":reset-diff-change"
+
+[keys.select]
+"C-/" = "toggle_comments"
+"{" = "goto_prev_paragraph"
+"}" = "goto_next_paragraph"
+
+[keys.normal.Z]
+C-h = "jump_view_left"
+C-j = "jump_view_down"
+C-k = "jump_view_up"
+C-l = "jump_view_right"
+
+[keys.normal."C-w"]
+d = "wclose"
+D = "wonly"
+"\\" = "vsplit"
+"|" = "vsplit"
+"minus" = "hsplit"
+"_" = "hsplit"
+
+[keys.normal."space"."w"]
+d = "wclose"
+D = "wonly"
+"\\" = "vsplit"
+"|" = "vsplit"
+"minus" = "hsplit"
+"_" = "hsplit"
+
+[keys.normal."space"."c"]
+c = ["toggle_comments"]
+f = [":format :write"]
+
+[keys.select."space"."c"]
+c = ["toggle_comments"]

@@ -1,0 +1,68 @@
+colorscheme shydactyl
+
+set incsearch true
+
+bind Q qall
+
+bind <Space>n tabopen https://news.ycombinator.com/
+bind H tabprev
+bind L tabnext
+bind x tabclose
+
+unbind b
+bind bo tabonly
+bind bxh tabcloseallto left
+bind bxl tabcloseallto right
+bind bf fillcmdline tab
+bind bF fillcmdline taball
+bind bm mute toggle
+bind bh tabmove -1
+bind bl tabmove +1
+bind bH tabmove ^
+bind bL tabmove $
+bind by tabduplicate
+bind bM mute all
+bind bU mute all unmute
+bind ba tabaudio
+bind bu undo
+
+bind <Space>N winopen https://news.ycombinator.com/
+bind X winclose
+bind <Space>wm winmerge
+bind <Space>wM fillcmdline winmerge
+
+bind o fillcmdline open
+bind O fillcmdline tabopen
+
+bind s fillcmdline open search
+bind S fillcmdline tabopen search
+bind <Space>s open search
+bind <Space>S tabopen search
+
+bind <C-o> back
+bind <C-i> forward
+
+bind u scrollpage -0.5
+bind d scrollpage 0.5
+
+bind / fillcmdline find
+bind ? fillcmdline find --reverse
+bind n findnext --search-from-view
+bind N findnext --search-from-view --reverse
+bind gn findselect
+bind gN composite findnext --search-from-view --reverse; findselect
+
+bind r reload
+bind R reloadall
+
+bind Y clipboard yank
+
+bind <Space>y hint -y
+bind <Space>i hint -i
+bind <Space>z hint -z
+bind <Space>k hint -k
+
+unbind gf
+bind gf hint -wp
+
+bind <Space>r reader

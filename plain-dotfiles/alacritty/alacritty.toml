@@ -1,0 +1,34 @@
+[window]
+decorations = "None"
+startup_mode = "Maximized"
+# MacOS only
+option_as_alt = "Both"
+
+[font]
+normal = { family = "FiraCode Nerd Font Mono" }
+size = 18
+
+# Gruvbox Material - https://github.com/alacritty/alacritty-theme
+[colors.primary]
+background = '#282828'
+foreground = '#dfbf8e'
+
+[colors.normal]
+black = '#665c54'
+red = '#ea6962'
+green = '#a9b665'
+yellow = '#e78a4e'
+blue = '#7daea3'
+magenta = '#d3869b'
+cyan = '#89b482'
+white = '#dfbf8e'
+
+[colors.bright]
+black = '#928374'
+red = '#ea6962'
+green = '#a9b665'
+yellow = '#e3a84e'
+blue = '#7daea3'
+magenta = '#d3869b'
+cyan = '#89b482'
+white = '#dfbf8e'

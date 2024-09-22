@@ -1,0 +1,34 @@
+[init]
+	defaultBranch = main
+
+[core]
+	editor = nvim
+	pager = delta
+[core.text]
+	eol = lf
+
+[color]
+	ui = auto
+
+[diff]
+	tool = nvimdiff
+[difftool]
+	prompt = false
+
+[merge]
+	tool = nvimdiff
+[mergetool]
+	prompt = true
+
+[delta]
+	features = line-numbers
+	line-numbers = true
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[include]
+	path = ./.gitprofile
